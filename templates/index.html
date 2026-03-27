@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Diabetes Risk Predictor</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #eef2f7 100%);
+      color: #1a2c3e;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #0f2b3d 0%, #1e4a6e 100%);
+      color: white;
+      padding: 2.5rem;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Two‑column layout */
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .info-section {
+      flex: 1;
+      padding: 2rem 2rem 2rem 2.5rem;
+      background: #fefefe;
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .form-section {
+      flex: 1;
+      padding: 2rem 2.5rem;
+      background: #ffffff;
+    }
+
+    .info-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: #0f2b3d;
+    }
+
+    .info-section h3 {
+      font-size: 1.3rem;
+      margin: 1.5rem 0 0.5rem;
+      color: #1e4a6e;
+    }
+
+    .info-section p {
+      margin-bottom: 1rem;
+      color: #2d3e50;
+    }
+
+    .info-section ul {
+      margin: 0.5rem 0 1rem 1.5rem;
+    }
+
+    .info-section li {
+      margin-bottom: 0.5rem;
+    }
+
+    .risk-factors{
+      background: #f0f9ff;
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin: 1rem 0;
+    }
+
+    .developer-info {
+      background: #09e29a;
+      border-left: 4px solid #f50b1b;
+      padding: 1.2rem;
+      border-radius: 16px;
+      margin: 2rem ;
+    }
+
+    .form-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: #0f2b3d;
+      border-bottom: 2px solid #e2e8f0;
+      padding-bottom: 0.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .form-group label {
+      width: 180px;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+
+    .form-group input {
+      flex: 1;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #1e4a6e;
+      box-shadow: 0 0 0 3px rgba(30, 74, 110, 0.1);
+    }
+
+    button {
+      background: linear-gradient(135deg, #1e4a6e 0%, #0f2b3d 100%);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 1rem;
+      transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(30, 74, 110, 0.4);
+    }
+
+    .footer {
+      background: #f8fafc;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      color: #64748b;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+
+      .content {
+        flex-direction: column;
+      }
+
+      .info-section {
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 1.5rem;
+      }
+
+      .form-section {
+        padding: 1.5rem;
+      }
+
+      .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .form-group label {
+        width: 100%;
+        margin-bottom: 0.3rem;
+      }
+
+      .form-group input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🩺 Diabetes Risk Predictor</h1>
+      <p>
+        Assess your risk of developing diabetes using our machine learning
+        model
+      </p>
+    </div>
+    <div class="content">
+      <div class="info-section">
+        <h2>About Diabetes</h2>
+        <p>
+          Diabetes is a chronic condition that affects how your body turns
+          food into energy. There are two main types:
+        </p>
+        <ul>
+          <li><strong>Type 1:</strong> The body does not produce insulin.</li>
+          <li>
+            <strong>Type 2:</strong> The body does not use insulin properly
+            (more common).
+          </li>
+        </ul>
+        <div class="risk-factors">
+          <h3>🚨 Common Risk Factors</h3>
+          <ul>
+            <li>Family history of diabetes</li>
+            <li>Overweight or obesity (high BMI)</li>
+            <li>Physical inactivity</li>
+            <li>High blood pressure</li>
+            <li>Age (45 years or older)</li>
+            <li>Gestational diabetes during pregnancy</li>
+          </ul>
+        </div>
+        
+        <h3>📊 How This Tool Works</h3>
+        <p>
+          Our model uses a Support Vector Machine (SVM) trained on the
+          <strong>Pima Indians Diabetes Dataset</strong>. It analyses 8
+          medical parameters to estimate your diabetes risk. The model
+          achieves ~77% accuracy on test data.
+        </p>
+        <p>
+          <em>⚠️ Disclaimer: This tool is for educational purposes only and
+            should not replace professional medical advice.</em>
+        </p>
+        
+      </div>
+      
+      <div class="form-section">
+        <h2>Enter Your Health Metrics</h2>
+        <form action="/predict" method="post">
+          <div class="form-group">
+            <label>Pregnancies:</label>
+            <input type="number" step="any" name="Pregnancies" required placeholder="e.g., 0, 1, 2..." />
+          </div>
+          <div class="form-group">
+            <label>Glucose (mg/dL):</label>
+            <input type="number" step="any" name="Glucose" required placeholder="e.g., 85" />
+          </div>
+          <div class="form-group">
+            <label>Blood Pressure (mm Hg):</label>
+            <input type="number" step="any" name="BloodPressure" required placeholder="e.g., 70" />
+          </div>
+          <div class="form-group">
+            <label>Skin Thickness (mm):</label>
+            <input type="number" step="any" name="SkinThickness" required placeholder="e.g., 20" />
+          </div>
+          <div class="form-group">
+            <label>Insulin (µIU/mL):</label>
+            <input type="number" step="any" name="Insulin" required placeholder="e.g., 0" />
+          </div>
+          <div class="form-group">
+            <label>BMI (kg/m²):</label>
+            <input type="number" step="any" name="BMI" required placeholder="e.g., 25.0" />
+          </div>
+          <div class="form-group">
+            <label>Diabetes Pedigree Function:</label>
+            <input type="number" step="any" name="DiabetesPedigreeFunction" required placeholder="e.g., 0.5" />
+          </div>
+          <div class="form-group">
+            <label>Age (years):</label>
+            <input type="number" step="any" name="Age" required placeholder="e.g., 30" />
+          </div>
+          <button type="submit">🔍 Predict Diabetes Risk</button>
+        </form>
+      </div>
+    </div>
+    <!-- Developer Information Section -->
+        <div class="developer-info">
+          <h3>👨‍💻 About the Developer</h3>
+          <p>
+            <strong>MUBASSHIR ALI</strong> – Data Science Enthusiast & Machine
+            Learning Practitioner.
+          </p>
+          <p>
+            This project was built as part of a machine learning portfolio to
+            demonstrate the application of a Support Vector Machine (SVM)
+            model for diabetes prediction. The model was trained on the PIMA
+            Indians Diabetes Dataset and integrated into a Flask web
+            application.
+          </p>
+          <p>
+            📧 Contact:
+            <a href="mubasshirali0710@gmail.com">mubasshirali0710@gmail.com"</a>
+          </p>
+          <p>
+            🔗
+            <a href="https://github.com/MUBASSHIRALI0710" target="_blank">GitHub</a>
+            |
+            <a href="www.linkedin.com/in/mubasshir-ali0710" target="_blank">LinkedIn</a>
+          </p>
+        </div>
+    <div class="footer">
+      <p>
+        Powered by Scikit-learn • Model accuracy: ~77% • Data source: Pima
+        Indians Diabetes Dataset
+      </p>
+      <p>Created by <strong>MUBASSHIR ALI</strong> | © 2024</p>
+    </div>
+  </div>
+</body>
+
+</html>
