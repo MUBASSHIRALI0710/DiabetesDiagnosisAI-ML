@@ -8,7 +8,7 @@ This project uses a Support Vector Machine (SVM) model to predict diabetes risk 
 - Educational information about diabetes and risk factors
 
 ## Live Demo
-[Insert Render deployment URL here]
+https://diabetesdiagnosis-ai-ml.onrender.com/
 
 ## Local Setup
 1. Clone the repository
